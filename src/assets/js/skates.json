@@ -1,0 +1,113 @@
+[
+    {
+      "id": 1,
+      "name": "Cliche X Skateboards",
+      "price": 119,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image74.jpg",
+      "images": ["/public/products/image74.jpg", "/public/products/image75.jpg"],
+      "category": "Featured",
+      "size": "L",
+      "color": "Black"
+    },
+    {
+      "id": 2,
+      "name": "WHOME Pro Skateboard",
+      "price": 96.69,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/Frame1291_19fa2bdc-7c49-4bfa-9cea-faab095326c5.jpg",
+      "images": ["/public/products/Frame1291_19fa2bdc-7c49-4bfa-9cea-faab095326c5.jpg", "/public/products/image96.jpg"],
+      "category": "Top Seller",
+      "size": "M",
+      "color": "Blue"
+    },
+    {
+      "id": 3,
+      "name": "Alouette Phoenix Ryders",
+      "price": 69.96,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/Frame1292.jpg",
+      "images": ["/public/products/Frame1292.jpg", "/public/products/image79.jpg"],
+      "category": "Latest",
+      "size": "M",
+      "color": "White"
+    },
+    {
+      "id": 4,
+      "name": "DB Longboards Harbinger",
+      "price": 85,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image76.jpg",
+      "images": ["/public/products/image76.jpg", "/public/products/image77.jpg"],
+      "category": "Top Seller",
+      "size": "S",
+      "color": "Black"
+    },
+    {
+      "id": 5,
+      "name": "Skateboards Complete",
+      "price": 110,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image78.jpg",
+      "images": ["/public/products/image78.jpg", "/public/products/image87.jpg"],
+      "category": "Featured",
+      "size": "M",
+      "color": "White"
+    },
+    {
+      "id": 6,
+      "name": "Rampage Plain Third",
+      "price": 94,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image80.jpg",
+      "images": ["/public/products/image80.jpg", "/public/products/image81.jpg"],
+      "category": "Top Seller",
+      "size": "L",
+      "color": "Blue"
+    },
+    {
+      "id": 7,
+      "name": "Enuff Isotown Complete",
+      "price": 79,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image82.jpg",
+      "images": ["/public/products/image82.jpg", "/public/products/image84.jpg"],
+      "category": "Latest",
+      "size": "L",
+      "color": "Black"
+    },
+    {
+      "id": 8,
+      "name": "Complete Skateboard",
+      "price": 99.99,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image85.jpg",
+      "images": ["/public/products/image85.jpg", "/public/products/image86.jpg"],
+      "category": "Featured",
+      "size": "M",
+      "color": "Black"
+    },
+    {
+      "id": 9,
+      "name": "Rampage Plain First Edition",
+      "price": 120,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image88_c21bcb38-57cf-48b9-9dec-cfaa22438988.jpg",
+      "images": ["/public/products/image88_c21bcb38-57cf-48b9-9dec-cfaa22438988.jpg", "/public/products/image90.jpg"],
+      "category": "Top Seller",
+      "size": "S",
+      "color": "White"
+    },
+    {
+      "id": 10,
+      "name": "Rampage Plain Skull Library",
+      "price": 60,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/public/products/image91.jpg",
+      "images": ["/public/products/image81.jpg", "/public/products/image93.jpg"],
+      "category": "Featured",
+      "size": "M",
+      "color": "Blue"
+    }
+  ]
+  
