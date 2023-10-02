@@ -160,10 +160,12 @@ const Products = () => {
         <div className="products-container">
           {products.map((product) => (
             <div key={product.id} className="products">
-              <div
-                className="img"
-                style={{ backgroundImage: `url(${product.thumbnail})` }}
-              ></div>
+              <Link to={`/products/${product.id}`}>
+                <div
+                  className="img"
+                  style={{ backgroundImage: `url(${product.thumbnail})` }}
+                ></div>
+              </Link>
               <div className="content">
                 <Link to={`/products/${product.id}`}>
                   <h4>{product.name}</h4>

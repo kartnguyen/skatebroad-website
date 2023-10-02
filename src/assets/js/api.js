@@ -11,5 +11,8 @@ export async function loadData() {
 }
 
 export function formattedPrice(price) {
-  return "$ " + price.toLocaleString("en-US");
+  return price.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 }

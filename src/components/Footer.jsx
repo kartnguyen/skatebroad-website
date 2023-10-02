@@ -73,7 +73,7 @@ const Footer = () => {
               <div className="footer-center">
                 <div className="logosvg" style={{ maxWidth: 180 }}>
                   <Link to={"/"}>
-                    <img src="kart-w.svg" alt="" />
+                    <img src="/kartw.svg" alt="" />
                   </Link>
                 </div>
                 <div className="list-icon">
@@ -98,10 +98,7 @@ const Footer = () => {
                 <div className="instagram-wrap">
                   <div className="picture">
                     <Link to={"https://www.instagram.com/"} target="_blank">
-                      <img
-                        src="/public/products/instagram_ft1.jpg"
-                        alt="instagram"
-                      />
+                      <img src="/products/instagram1.jpg" alt="instagram" />
                     </Link>
                   </div>
                   <div className="picture">
@@ -110,10 +107,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
-                        src="/public/products/instagram_ft2.jpg"
-                        alt="instagram"
-                      />
+                      <img src="/products/instagram2.jpg" alt="instagram" />
                     </Link>
                   </div>
                   <div className="picture">
@@ -122,10 +116,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
-                        src="/public/products/instagram_ft3.jpg"
-                        alt="instagram"
-                      />
+                      <img src="/products/instagram3.jpg" alt="instagram" />
                     </Link>
                   </div>
                   <div className="picture">
@@ -134,10 +125,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
-                        src="/public/products/instagram_ft4.jpg"
-                        alt="instagram"
-                      />
+                      <img src="/products/instagram4.jpg" alt="instagram" />
                     </Link>
                   </div>
                   <div className="picture">
@@ -146,10 +134,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
-                        src="/public/products/instagram_ft5.jpg"
-                        alt="instagram"
-                      />
+                      <img src="/products/instagram5.jpg" alt="instagram" />
                     </Link>
                   </div>
                   <div className="picture">
@@ -158,10 +143,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
-                        src="/public/products/instagram_ft6.jpg"
-                        alt="instagram"
-                      />
+                      <img src="/products/instagram6.jpg" alt="instagram" />
                     </Link>
                   </div>
                 </div>
@@ -177,7 +159,7 @@ const Footer = () => {
               <p>© Copyright 2023 | Powered by Thanh Nguyen.</p>
             </div>
             <div className="payment">
-              <img src="/public/products/payment.png" alt="" />
+              <img src="/products/payment.png" alt="" />
             </div>
           </div>
         </div>

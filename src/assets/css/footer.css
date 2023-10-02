@@ -17,6 +17,10 @@ footer .title_menu {
     margin-bottom: 24px;
 }
 
+footer .newsletter .title_menu {
+    transform: translateX(38px);
+}
+
 footer .menu,
 footer .center,
 footer .newsletter {
@@ -52,6 +56,8 @@ footer .instagram-wrap {
     display: grid;
     grid-template: auto / repeat(3, 1fr);
     gap: 10px;
+    width: 80%;
+    margin-left: auto;
 }
 
 footer .picture img {
@@ -135,6 +141,14 @@ footer .logosvg img {
     footer .newsletter {
         display: block;
         text-align: left;
+    }
+
+    footer .instagram-wrap {
+        margin-left: 0;
+    }
+
+    footer .newsletter .title_menu {
+        transform: none;
     }
 }
 
