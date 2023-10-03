@@ -86,7 +86,7 @@ const Header = () => {
           </div>
           <div className="action">
             <div className="login">
-              <NavLink to="/favorite">
+              <NavLink to="/wishlist">
                 <HeartOutlined />
               </NavLink>
               <NavLink to="/login">

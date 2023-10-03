@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppContext } from "../hooks/useAppContext";
-import { Breadcrumb, Drawer, Dropdown, Space } from "antd";
+import { Breadcrumb, Drawer, Dropdown, Space, notification } from "antd";
 import {
   FilterOutlined,
   DownOutlined,
@@ -8,16 +8,19 @@ import {
   ShoppingOutlined,
   SearchOutlined,
   HeartOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { formattedPrice } from "../assets/js/api";
 import { Link } from "react-router-dom";
 import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
+import { useCartContext } from "../hooks/useCartContext";
 
 const Products = () => {
   const [sortingLabel, setSortingLabel] = useState("Default Sorting");
   const [open, setOpen] = useState(false);
   const [showImage, setShowImage] = useState(false);
-  const { products } = useAppContext();
+  const { products, findProductById } = useAppContext();
+  const { handleAddItem } = useCartContext();
 
   const items = [
     {
@@ -49,7 +52,36 @@ const Products = () => {
   const handleQuickview = () => {
     setShowImage(!showImage);
   };
-
+  const openNotification = (product, qty) => {
+    notification.success({
+      message: "Successful Purchase",
+      description: (
+        <div className="description-alert">
+          <div
+            className="alert-img"
+            style={{ backgroundImage: `url('${product.thumbnail}')` }}
+          ></div>
+          <p>
+            <b>{product.name}</b>
+            <p>X {qty}</p>
+          </p>
+        </div>
+      ),
+      icon: (
+        <ShoppingCartOutlined
+          style={{
+            color: "#00FF5F",
+          }}
+        />
+      ),
+      duration: 1.5,
+    });
+  };
+  const onAddItem = (id, qty) => {
+    const product = findProductById(id);
+    handleAddItem(id, qty);
+    openNotification(product, qty);
+  };
   return (
     <section>
       <div className="breadcrumb">
@@ -176,7 +208,10 @@ const Products = () => {
                 <p>{formattedPrice(product.price)}</p>
               </div>
               <div className="menu">
-                <div className="icon">
+                <div
+                  className="icon"
+                  onClick={() => onAddItem(product.id, product.quantity)}
+                >
                   <ShoppingOutlined title="Add To Cart" />
                 </div>
                 <div className="icon" onClick={handleQuickview}>

@@ -2,19 +2,19 @@ import { Breadcrumb } from "antd";
 import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Wishlist = () => {
   return (
-    <section className="login-page">
+    <section className="wishlist-page">
       <div className="container">
         <Breadcrumb separator=">">
           <BreadcrumbItem>
             <Link to="/">Home</Link>
           </BreadcrumbItem>
-          <BreadcrumbItem>Login</BreadcrumbItem>
+          <BreadcrumbItem>Your Wishlist</BreadcrumbItem>
         </Breadcrumb>
       </div>
     </section>
   );
 };
 
-export default Login;
+export default Wishlist;

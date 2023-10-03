@@ -66,23 +66,25 @@ a {
 }
 
 .text-2 {
-    right: 20%;
+    right: 15%;
 }
 
 .text-slider b {
     letter-spacing: 2px;
+    font-size: 22px;
 }
 
 .text-slider h1 {
     letter-spacing: 2px;
     margin: 12px 0;
     text-transform: capitalize;
-    font-size: 46px;
+    font-size: 60px;
     color: #ff7245;
 }
 
 .text-slider p {
     opacity: 0.6;
+    font-size: 16px;
 }
 
 .text-slider button {
@@ -91,8 +93,8 @@ a {
     font-size: 14px;
     font-weight: 700;
     border: none;
-    border-radius: 4px;
-    padding: 10px 32px;
+    border-radius: 24px;
+    padding: 12px 46px;
     cursor: pointer;
     transition: all 0.3s ease;
     outline: none;
@@ -102,8 +104,7 @@ a {
 }
 
 .text-slider button:hover {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: #222;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     transition: all 0.3s ease;
 }
@@ -509,8 +510,7 @@ a {
     height: 450px !important;
 }
 
-.details-page .ant-breadcrumb,
-.cart-page .ant-breadcrumb {
+.ant-breadcrumb {
     margin-bottom: 32px;
 }
 
@@ -892,6 +892,10 @@ a {
 }
 
 /* ------------------------cart------------------------------- */
+.cart-products {
+    margin-bottom: 60px;
+}
+
 .cart-page .no-results {
     display: flex;
     flex-direction: column;
@@ -903,4 +907,73 @@ a {
 .cart-page .no-results h1 {
     text-transform: capitalize;
     color: #ff7245;
+}
+
+.cart-table {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cart-table b {
+    margin-left: 32px;
+}
+
+.cart-page .buttons_added .is-form:hover,
+.cart-page .anticon-delete:hover svg {
+    color: #ff7245;
+}
+
+.ant-table-wrapper {
+    margin: 30px 0;
+}
+
+.check-out {
+    border: 1px solid #eee;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 16px;
+}
+
+.check-out .total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.check-out .check-out-btn {
+    display: flex;
+    margin-left: auto;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #ff7245;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    padding: 18px 60px;
+    text-align: center;
+    line-height: 24px;
+    letter-spacing: .2em;
+    font-weight: 500;
+}
+
+.check-out .check-out-btn:hover {
+    background-color: #222;
+}
+
+@media (max-width:768px) {
+    .cart-table .ant-image {
+        display: none;
+    }
+
+    .cart-table b {
+        margin-left: 0;
+    }
+
+    .check-out .check-out-btn {
+        padding: 8px 16px;
+        letter-spacing: 0;
+    }
 }
