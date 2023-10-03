@@ -16,3 +16,11 @@
   background-color: #ff7245;
   color: #fff;
 }
+
+.disabled {
+  opacity: 0.5;
+}
+
+.disabled:hover {
+  cursor: not-allowed;
+}

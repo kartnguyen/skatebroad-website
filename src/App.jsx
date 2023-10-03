@@ -10,6 +10,7 @@ import Register from "./routes/Register";
 import ProductDetail from "./routes/ProductDetail";
 import Favorite from "./routes/Favorite";
 import { AppProvider } from "./context/AppContext";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   const routes = createBrowserRouter([
@@ -30,7 +31,9 @@ function App() {
   ]);
   return (
     <AppProvider>
-      <RouterProvider router={routes}></RouterProvider>
+      <CartProvider>
+        <RouterProvider router={routes}></RouterProvider>
+      </CartProvider>
     </AppProvider>
   );
 }

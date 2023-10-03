@@ -50,6 +50,7 @@ footer .newsletter {
     align-items: flex-end;
     text-align: center;
     padding-inline: 0;
+    overflow: hidden;
 }
 
 footer .instagram-wrap {

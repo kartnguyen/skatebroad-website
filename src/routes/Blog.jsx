@@ -1,15 +1,18 @@
 import { Breadcrumb } from "antd";
-import React from "react";
+import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   return (
     <section>
       <div className="breadcrumb">
         <h1 className="breadcrumb-title">News</h1>
-        <Breadcrumb
-          separator=">"
-          items={[{ title: "Home", href: "/" }, { title: "News" }]}
-        ></Breadcrumb>
+        <Breadcrumb separator=">">
+          <BreadcrumbItem>
+            <Link to="/">Home</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem>News</BreadcrumbItem>
+        </Breadcrumb>
       </div>
       <div className="container">
         <div className="blog-page">
@@ -26,18 +29,18 @@ const Blog = () => {
                 <div className="post-info">
                   <h4 className="blog-title">News</h4>
                   <h3 className="post-title">
-                    <a href="" title="Training During Ramadan">
+                    <Link to={"/blog"} title="Training During Ramadan">
                       Training During Ramadan
-                    </a>
+                    </Link>
                   </h3>
                   <p className="desc">
                     In mattis scelerisque magna, ut tincidunt ex. Quisque nibh
                     urna, pretium in tristique in, bibendum sed libero.
                     Pellentesque mauris nunc, pr...
                   </p>
-                  <a className="btn_readmore" href="/blog">
+                  <Link to={"/blog"} className="btn_readmore">
                     <span>Read more </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -53,18 +56,18 @@ const Blog = () => {
                 <div className="post-info">
                   <h4 className="blog-title">News</h4>
                   <h3 className="post-title">
-                    <a href="" title="Collagen And White Tissue">
+                    <Link to={"/blog"} title="Collagen And White Tissue">
                       Collagen And White Tissue
-                    </a>
+                    </Link>
                   </h3>
                   <p className="desc">
                     In mattis scelerisque magna, ut tincidunt ex. Quisque nibh
                     urna, pretium in tristique in, bibendum sed libero.
                     Pellentesque mauris nunc, pr...
                   </p>
-                  <a className="btn_readmore" href="/blog">
+                  <Link to={"/blog"} className="btn_readmore">
                     <span>Read more </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -80,18 +83,18 @@ const Blog = () => {
                 <div className="post-info">
                   <h4 className="blog-title">News</h4>
                   <h3 className="post-title">
-                    <a href="" title="What's The Best Time To  Gym?">
+                    <Link to={"/blog"} title="What's The Best Time To  Gym?">
                       What&apos;s The Best Time To Gym?
-                    </a>
+                    </Link>
                   </h3>
                   <p className="desc">
                     In mattis scelerisque magna, ut tincidunt ex. Quisque nibh
                     urna, pretium in tristique in, bibendum sed libero.
                     Pellentesque mauris nunc, pr...
                   </p>
-                  <a className="btn_readmore" href="/blog">
+                  <Link className="btn_readmore" to={"/blog"}>
                     <span>Read more </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -107,18 +110,18 @@ const Blog = () => {
                 <div className="post-info">
                   <h4 className="blog-title">News</h4>
                   <h3 className="post-title">
-                    <a href="" title="Post Format Video Blogs">
+                    <Link to={"/blog"} title="Post Format Video Blogs">
                       Post Format Video Blogs
-                    </a>
+                    </Link>
                   </h3>
                   <p className="desc">
                     Nunc aliquet, justo non commodo congue, velit sem pulvinar
                     enim, ac bibendum mi mi eget libero. Maecenas ac viverra
                     enim, et laoreet lacus....
                   </p>
-                  <a className="btn_readmore" href="/blog">
+                  <Link to={"/blog"} className="btn_readmore">
                     <span>Read more </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -134,18 +137,18 @@ const Blog = () => {
                 <div className="post-info">
                   <h4 className="blog-title">News</h4>
                   <h3 className="post-title">
-                    <a href="" title="Post Format Gallery Blogs">
+                    <Link to={"/blog"} title="Post Format Gallery Blogs">
                       Post Format Gallery Blogs
-                    </a>
+                    </Link>
                   </h3>
                   <p className="desc">
                     Nunc aliquet, justo non commodo congue, velit sem pulvinar
                     enim, ac bibendum mi mi eget libero. Maecenas ac viverra
                     enim, et laoreet lacus....
                   </p>
-                  <a className="btn_readmore" href="/blog">
+                  <Link to={"/blog"} className="btn_readmore">
                     <span>Read more </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -161,18 +164,18 @@ const Blog = () => {
                 <div className="post-info">
                   <h4 className="blog-title">News</h4>
                   <h3 className="post-title">
-                    <a href="" title="Post Format Audio Blogs">
+                    <Link to={"/blog"} title="Post Format Audio Blogs">
                       Post Format Audio Blogs
-                    </a>
+                    </Link>
                   </h3>
                   <p className="desc">
                     Nunc aliquet, justo non commodo congue, velit sem pulvinar
                     enim, ac bibendum mi mi eget libero. Maecenas ac viverra
                     enim, et laoreet lacus....
                   </p>
-                  <a className="btn_readmore" href="/blog">
+                  <Link to={"/blog"} className="btn_readmore">
                     <span>Read more </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -2,38 +2,91 @@ import { Link, useParams } from "react-router-dom";
 import { formattedPrice } from "../assets/js/api";
 import { useAppContext } from "../hooks/useAppContext";
 import { useEffect, useState } from "react";
-import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
-import { Breadcrumb, Skeleton } from "antd";
+import {
+  MinusOutlined,
+  PlusOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
+import { Breadcrumb, Skeleton, notification } from "antd";
 import Details from "../components/Details";
+import { useCartContext } from "../hooks/useCartContext";
+import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 
 const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [currentImg, setCurrentImg] = useState();
+  const [quantity, setQuantity] = useState();
   const { productId } = useParams();
   const { findProductById } = useAppContext();
+  const { handleAddItem } = useCartContext();
 
   const product = findProductById(productId);
   useEffect(() => {
     if (product) {
       setTimeout(() => setLoading(false), 500);
       setCurrentImg(product.images[0]);
+      setQuantity(product.quantity);
     }
   }, [product]);
 
   const handleImgSlider = (img) => {
     setCurrentImg(img.img);
   };
+
+  const handleQuantity = (params) => {
+    if (params === "minus") {
+      if (quantity > 1) {
+        setQuantity(quantity - 1);
+      } else {
+        document.querySelector(".minus").classList.add("disabled");
+      }
+    } else if (params === "plus") {
+      setQuantity(quantity + 1);
+      document.querySelector(".minus").classList.remove("disabled");
+    }
+  };
+  const openNotification = (product, qty) => {
+    notification.success({
+      message: "Successful Purchase",
+      description: (
+        <div className="description-alert">
+          <div
+            className="alert-img"
+            style={{ backgroundImage: `url('${currentImg}')` }}
+          ></div>
+          <p>
+            <b>{product.name}</b>
+            <p>X {qty}</p>
+          </p>
+        </div>
+      ),
+      icon: (
+        <ShoppingCartOutlined
+          style={{
+            color: "#00FF5F",
+          }}
+        />
+      ),
+      duration: 1.5,
+    });
+  };
+  const onAddItem = (id, qty) => {
+    handleAddItem(id, qty);
+    openNotification(product, qty);
+  };
+
   return (
     <section className="details-page">
       <div className="container">
-        <Breadcrumb
-          separator=">"
-          items={[
-            { title: "Home", href: "/" },
-            { title: "Products", href: "/products" },
-            { title: `${product.name}` },
-          ]}
-        ></Breadcrumb>
+        <Breadcrumb separator=">">
+          <BreadcrumbItem>
+            <Link to="/">Home</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <Link to="/products">Products</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem>{product.name}</BreadcrumbItem>
+        </Breadcrumb>
         <div className="products_details_page">
           <div className="products-container">
             {loading ? (
@@ -67,17 +120,28 @@ const ProductDetail = () => {
                   <h3 className="name">{product.name}</h3>
                   <div className="quantity">
                     <div className="buttons_added">
-                      <button className="minus is-form">
+                      <button
+                        className="minus is-form"
+                        value="minus"
+                        onClick={() => handleQuantity("minus")}
+                      >
                         <MinusOutlined />
                       </button>
-                      <span className="input-qty">{product.quantity}</span>
-                      <button className="plus is-form">
+                      <span className="input-qty">{quantity}</span>
+                      <button
+                        className="plus is-form"
+                        value="plus"
+                        onClick={() => handleQuantity("plus")}
+                      >
                         <PlusOutlined />
                       </button>
                     </div>
-                    <Link to={"/cart"}>
-                      <button className="btn-add">add to cart</button>
-                    </Link>
+                    <button
+                      className="btn-add"
+                      onClick={() => onAddItem(product.id, quantity)}
+                    >
+                      add to cart
+                    </button>
                   </div>
                   <h4 className="price">{formattedPrice(product.price)}</h4>
                   <p>{product.description}</p>

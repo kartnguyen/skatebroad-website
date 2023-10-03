@@ -11,6 +11,7 @@ import {
 } from "@ant-design/icons";
 import { formattedPrice } from "../assets/js/api";
 import { Link } from "react-router-dom";
+import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 
 const Products = () => {
   const [sortingLabel, setSortingLabel] = useState("Default Sorting");
@@ -53,10 +54,12 @@ const Products = () => {
     <section>
       <div className="breadcrumb">
         <h1 className="breadcrumb-title">Products</h1>
-        <Breadcrumb
-          separator=">"
-          items={[{ title: "Home", href: "/" }, { title: "Products" }]}
-        ></Breadcrumb>
+        <Breadcrumb separator=">">
+          <BreadcrumbItem>
+            <Link to={"/"}>Home</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem>Products</BreadcrumbItem>
+        </Breadcrumb>
       </div>
       <div className="container">
         <div className="filter-container">

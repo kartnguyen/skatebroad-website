@@ -4,6 +4,7 @@ import Loader from "../components/Loader";
 
 export const AppContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
