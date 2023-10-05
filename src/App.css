@@ -915,7 +915,7 @@ a {
     justify-content: flex-start;
 }
 
-.cart-table b {
+.cart-page .cart-table b {
     margin-left: 32px;
 }
 
@@ -924,7 +924,7 @@ a {
     color: #ff7245;
 }
 
-.ant-table-wrapper {
+.cart-page .ant-table-wrapper {
     margin: 30px 0;
 }
 
@@ -975,5 +975,465 @@ a {
     .check-out .check-out-btn {
         padding: 8px 16px;
         letter-spacing: 0;
+    }
+}
+
+/* --------------------------checkout------------------------------ */
+.checkout-page {
+    margin-bottom: 60px;
+}
+
+.checkout_page .triangle-top-right {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #fff;
+    border-left: 15px solid transparent;
+}
+
+.checkout_page .checkout_obj {
+    display: grid;
+    grid-template: auto / 60% 1fr;
+    gap: 32px;
+    align-items: stretch;
+}
+
+.checkout_page .checkout_obj .order_item {
+    background-color: #F4F6F8;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px 0 16px 16px;
+    border: 1px solid grey;
+    height: 100%;
+}
+
+.checkout_page .checkout_obj .order {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout_page .checkout_obj .check_out {
+    padding: 16px;
+    background-color: #F4F6F8;
+    border: 1px solid grey;
+    border-top: 0;
+    margin-top: auto;
+}
+
+.checkout_page .checkout_obj .cake {
+    padding-right: 34px;
+    overflow: auto;
+}
+
+.checkout_page .checkout_obj .cake_item {
+    display: grid;
+    grid-template: auto / 20% 40% 1fr;
+    gap: 16px;
+    padding-bottom: 16px;
+}
+
+.checkout_page .checkout_obj .cake_item .img {
+    background: no-repeat center;
+    background-size: cover;
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
+.checkout_page .checkout_obj .cake_item h4 {
+    margin: 12px 0;
+}
+
+.checkout_page .checkout_obj .buttons_added {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkout_page .checkout_obj .is-form {
+    border: 1px solid gray;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+.checkout_page .checkout_obj .is-form:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid var(--primary-color);
+}
+
+.checkout_page .checkout_obj .confirm {
+    padding: 16px 0;
+    display: block;
+    font-size: 20px;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    border: none;
+}
+
+.triangle-top-right {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #fff;
+    border-left: 15px solid transparent;
+}
+
+.checkout_page .checkout_obj .confirm:hover {
+    background-color: #333;
+}
+
+.checkout_page .checkout_obj .order_item .item {
+    margin: 12px 0;
+    font-size: 18px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.checkout_page .checkout_obj .order_item .hr-container {
+    text-align: right;
+    width: 100%;
+}
+
+.checkout_page .checkout_obj .order_item .hr-line {
+    width: 30%;
+    height: 1px;
+    background-color: black;
+    margin-left: auto;
+}
+
+.checkout_obj .information .delivery .item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout_obj .information .delivery .item:last-child {
+    grid-column: span 2;
+}
+
+.checkout_obj .information .input {
+    padding: 0.6rem;
+    border: 1px solid #cdcccc;
+    border-radius: 5px;
+}
+
+.checkout_obj .information .delivery label {
+    margin-bottom: 12px;
+}
+
+.checkout_obj .information .delivery label p {
+    display: inline-block;
+}
+
+.checkout_obj .information .required {
+    color: red;
+}
+
+.checkout_page .checkout_obj .list {
+    border: 1px solid grey;
+    margin-bottom: 24px;
+}
+
+.checkout_page .checkout_obj .method .list {
+    margin-bottom: 0;
+}
+
+.checkout_page .checkout_obj .delivery .list,
+.checkout_page .checkout_obj .method .list {
+    display: grid;
+    grid-template: auto /1fr 1fr;
+    gap: 16px;
+    background-color: #F4F6F8;
+    padding: 22px;
+}
+
+.checkout_obj h3 {
+    margin-bottom: 18px;
+}
+
+.checkout_obj .method_item {
+    box-sizing: border-box;
+    --background-color: #ff7245;
+    --checkbox-height: 20px;
+    display: flex;
+}
+
+.checkout_obj .method_item .item {
+    display: flex;
+    cursor: pointer;
+}
+
+.checkout_obj .method_item p {
+    margin-left: 14px;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl {
+    display: none;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl,
+.checkout_page .information .checkbox-wrapper .tgl:after,
+.checkout_page .information .checkbox-wrapper .tgl:before,
+.checkout_page .information .checkbox-wrapper .tgl *,
+.checkout_page .information .checkbox-wrapper .tgl *:after,
+.checkout_page .information .checkbox-wrapper .tgl *:before,
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn {
+    box-sizing: border-box;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl::-moz-selection,
+.checkout_page .information .checkbox-wrapper .tgl:after::-moz-selection,
+.checkout_page .information .checkbox-wrapper .tgl:before::-moz-selection,
+.checkout_page .information .checkbox-wrapper .tgl *::-moz-selection,
+.checkout_page .information .checkbox-wrapper .tgl *:after::-moz-selection,
+.checkout_page .information .checkbox-wrapper .tgl *:before::-moz-selection,
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn::-moz-selection,
+.checkout_page .information .checkbox-wrapper .tgl::selection,
+.checkout_page .information .checkbox-wrapper .tgl:after::selection,
+.checkout_page .information .checkbox-wrapper .tgl:before::selection,
+.checkout_page .information .checkbox-wrapper .tgl *::selection,
+.checkout_page .information .checkbox-wrapper .tgl *:after::selection,
+.checkout_page .information .checkbox-wrapper .tgl *:before::selection,
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn::selection {
+    background: none;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn {
+    outline: 0;
+    display: block;
+    width: 3em;
+    height: 1.5em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn:after,
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn:after {
+    left: 0;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl+.tgl-btn:before {
+    display: none;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl:checked+.tgl-btn:after {
+    left: 50%;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed+.tgl-btn {
+    overflow: hidden;
+    transform: skew(-10deg);
+    backface-visibility: hidden;
+    transition: all 0.2s ease;
+    font-family: sans-serif;
+    background: #888;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed+.tgl-btn:after,
+.checkout_page .information .checkbox-wrapper .tgl-skewed+.tgl-btn:before {
+    transform: skew(10deg);
+    display: inline-block;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    line-height: 1.5em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed+.tgl-btn:after {
+    left: 100%;
+    content: attr(data-tg-on);
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed+.tgl-btn:before {
+    left: 0;
+    content: attr(data-tg-off);
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed+.tgl-btn:active {
+    background: #888;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed+.tgl-btn:active:before {
+    left: -10%;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed:checked+.tgl-btn {
+    background: #86d993;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed:checked+.tgl-btn:before {
+    left: -100%;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed:checked+.tgl-btn:after {
+    left: 0;
+}
+
+.checkout_page .information .checkbox-wrapper .tgl-skewed:checked+.tgl-btn:active:after {
+    left: 10%;
+}
+
+
+
+@keyframes dothabottomcheck-19 {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: calc(var(--checkbox-height) / 2);
+    }
+}
+
+@keyframes dothatopcheck-19 {
+    0% {
+        height: 0;
+    }
+
+    50% {
+        height: 0;
+    }
+
+    100% {
+        height: calc(var(--checkbox-height) * 1.2);
+    }
+}
+
+.checkout_obj .method_item input[type=radio] {
+    display: none;
+}
+
+.checkout_obj .method_item .check-box {
+    height: var(--checkbox-height);
+    width: var(--checkbox-height);
+    background-color: transparent;
+    border: calc(var(--checkbox-height) * .1) solid grey;
+    border-radius: 4px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.checkout_obj .method_item .check-box::before,
+.checkout_obj .method_item .check-box::after {
+    box-sizing: border-box;
+    position: absolute;
+    height: 0;
+    width: calc(var(--checkbox-height) * .15);
+    background-color: var(--background-color);
+    display: inline-block;
+    transform-origin: left top;
+    border-radius: 5px;
+    content: '';
+    transition: opacity ease 0.5;
+}
+
+.checkout_obj .method_item .check-box::before {
+    top: calc(var(--checkbox-height) * .72);
+    left: calc(var(--checkbox-height) * .41);
+    transform: rotate(-135deg);
+}
+
+.checkout_obj .method_item .check-box::after {
+    top: calc(var(--checkbox-height) * .37);
+    left: calc(var(--checkbox-height) * .05);
+    transform: rotate(-45deg);
+}
+
+.checkout_obj .method_item input[type=radio]:checked+.check-box,
+.checkout_obj .method_item .check-box.checked {
+    border-color: var(--background-color);
+}
+
+.checkout_obj .method_item input[type=radio]:checked+.check-box::after,
+.checkout_obj .method_item .check-box.checked::after {
+    height: calc(var(--checkbox-height) / 2);
+    animation: dothabottomcheck-19 0.2s ease 0s forwards;
+}
+
+.checkout_obj .method_item input[type=radio]:checked+.check-box::before,
+.checkout_obj .method_item .check-box.checked::before {
+    height: calc(var(--checkbox-height) * 1.2);
+    animation: dothatopcheck-19 0.4s ease 0s forwards;
+}
+
+.checkout_page .ant-table.ant-table-small,
+.checkout_page .ant-table-cell {
+    background-color: transparent !important;
+}
+
+.checkout_page .cart-table p {
+    margin-left: 8px;
+}
+
+
+@media (max-width:1023px) {
+    .checkout_page .none_obj h2 {
+        font-size: 26px;
+    }
+
+    .checkout_page .none_obj button {
+        font-size: 16px;
+    }
+
+    .checkout_page .checkout_obj {
+        display: block;
+    }
+
+    .checkout_page .checkout_obj .delivery .list,
+    .checkout_page .checkout_obj .method .list {
+        display: block;
+    }
+
+    .checkout_obj .information .delivery .item {
+        margin-bottom: 16px;
+    }
+
+    .checkout_obj .method_item:first-child {
+        margin-bottom: 16px;
+    }
+
+    .checkout_obj .list .method_error {
+        margin-top: 14px;
+    }
+
+    .checkout_obj .order h3 {
+        margin-top: 24px;
+    }
+
+    .checkout_page .checkout_obj .cake {
+        padding-right: 16px;
+    }
+
+    .checkout_page .checkout_obj .cake_item {
+        gap: 8px;
     }
 }
