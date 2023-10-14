@@ -10,7 +10,6 @@ import {
 import { Breadcrumb, Skeleton, notification } from "antd";
 import Details from "../components/Details";
 import { useCartContext } from "../hooks/useCartContext";
-import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 
 const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
@@ -56,7 +55,7 @@ const ProductDetail = () => {
           ></div>
           <p>
             <b>{product.name}</b>
-            <p>X {qty}</p>
+            <span>X {qty}</span>
           </p>
         </div>
       ),
@@ -67,7 +66,11 @@ const ProductDetail = () => {
           }}
         />
       ),
-      duration: 1.5,
+      duration: 1,
+    });
+    notification.config({
+      placement: "bottomRight",
+      bottom: 50,
     });
   };
   const onAddItem = (id, qty) => {
@@ -78,15 +81,22 @@ const ProductDetail = () => {
   return (
     <section className="details-page">
       <div className="container">
-        <Breadcrumb separator=">">
-          <BreadcrumbItem>
-            <Link to="/">Home</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            <Link to="/products">Products</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem>{product.name}</BreadcrumbItem>
-        </Breadcrumb>
+        <Breadcrumb
+          separator=">"
+          items={[
+            {
+              title: "Home",
+              href: "/",
+            },
+            {
+              title: "Products",
+              href: "/products",
+            },
+            {
+              title: product.name,
+            },
+          ]}
+        />
         <div className="products_details_page">
           <div className="products-container">
             {loading ? (

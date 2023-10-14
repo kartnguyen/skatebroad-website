@@ -37,6 +37,22 @@ export const CartReducer = (state, action) => {
           (product) => product.productId !== action.payload.productId
         ),
       };
+    case "UPDATE_CART": {
+      const updatedProducts = state.products.map((product) => {
+        if (product.productId === action.payload.productId) {
+          return {
+            ...product,
+            quantity: action.payload.quantity,
+          };
+        }
+        return product;
+      });
+
+      return {
+        ...state,
+        products: updatedProducts,
+      };
+    }
     default:
       throw new Error("Invalid action type: " + action.type);
   }
@@ -75,6 +91,12 @@ export const CartProvider = ({ children }) => {
       payload: { productId },
     });
   };
+  const handleUpdateItem = (productId, quantity) => {
+    dispatch({
+      type: "UPDATE_CART",
+      payload: { productId, quantity },
+    });
+  };
   const items = state.products.map((item) => ({
     product: findProductById(item.productId),
     quantity: item.quantity,
@@ -82,7 +104,14 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ ...state, handleAddItem, totalItems, handleRemoveItem, items }}
+      value={{
+        ...state,
+        handleAddItem,
+        totalItems,
+        handleRemoveItem,
+        items,
+        handleUpdateItem,
+      }}
     >
       {children}
     </CartContext.Provider>

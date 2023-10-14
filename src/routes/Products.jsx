@@ -9,36 +9,84 @@ import {
   SearchOutlined,
   HeartOutlined,
   ShoppingCartOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { formattedPrice } from "../assets/js/api";
 import { Link } from "react-router-dom";
-import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 import { useCartContext } from "../hooks/useCartContext";
+import "../assets/css/loader.css";
+import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 
 const Products = () => {
-  const [sortingLabel, setSortingLabel] = useState("Default Sorting");
+  const [sortingLabel, setSortingLabel] = useState("Sorting");
   const [open, setOpen] = useState(false);
   const [showImage, setShowImage] = useState(false);
+  const [currentImg, setCurrentImg] = useState("");
+  const [currentFilter, setCurrentFilter] = useState("");
+  const [currentFilterType, setCurrentFilterType] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [sort, setSort] = useState("");
+
   const { products, findProductById } = useAppContext();
   const { handleAddItem } = useCartContext();
 
+  const filteredProducts = () => {
+    if (currentFilter === "" && currentFilterType === "" && sort === "")
+      return products;
+    const filterProducts = products.filter((product) => {
+      if (currentFilterType === "category") {
+        return product.category === currentFilter;
+      } else if (currentFilterType === "size") {
+        return product.size === currentFilter;
+      } else if (currentFilterType === "color") {
+        return product.color === currentFilter;
+      }
+      return true;
+    });
+
+    if (sort === "Alphabetically, A-Z") {
+      return filterProducts.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sort === "Price, low to high") {
+      return filterProducts.sort((a, b) => a.price - b.price);
+    } else if (sort === "Price, high to low") {
+      return filterProducts.sort((a, b) => b.price - a.price);
+    }
+    return filterProducts;
+  };
+
+  const handleFilter = ({ type, params }) => {
+    setLoading(true);
+    document.body.classList.add("overflow-hidden");
+    setTimeout(() => {
+      setLoading(false);
+      setCurrentFilter(params);
+      setCurrentFilterType(type);
+      document.body.classList.remove("overflow-hidden");
+    }, 800);
+  };
+
   const items = [
     {
-      label: "Alphabetically, A-Z",
+      label: "Default Sorting",
       key: "1",
     },
     {
-      label: "Price, low to high",
+      label: "Alphabetically, A-Z",
       key: "2",
     },
     {
-      label: "Price, high to low",
+      label: "Price, low to high",
       key: "3",
+    },
+    {
+      label: "Price, high to low",
+      key: "4",
     },
   ];
 
   const handleSortingLabel = (label) => {
     setSortingLabel(label);
+    setSort(label);
   };
 
   const showDrawer = () => {
@@ -49,9 +97,17 @@ const Products = () => {
     setOpen(false);
   };
 
-  const handleQuickview = () => {
-    setShowImage(!showImage);
+  const handleQuickview = (id) => {
+    const pro = findProductById(id);
+    setCurrentImg(pro.images);
+    document.body.classList.add("overflow-hidden");
+    setShowImage(true);
   };
+  const handleCloseImg = () => {
+    setShowImage(false);
+    document.body.classList.remove("overflow-hidden");
+  };
+
   const openNotification = (product, qty) => {
     notification.success({
       message: "Successful Purchase",
@@ -62,8 +118,8 @@ const Products = () => {
             style={{ backgroundImage: `url('${product.thumbnail}')` }}
           ></div>
           <p>
-            <b>{product.name}</b>
-            <p>X {qty}</p>
+            <b>{product.name} </b>
+            <span> X {qty}</span>
           </p>
         </div>
       ),
@@ -74,7 +130,11 @@ const Products = () => {
           }}
         />
       ),
-      duration: 1.5,
+      duration: 1,
+    });
+    notification.config({
+      placement: "bottomRight",
+      bottom: 50,
     });
   };
   const onAddItem = (id, qty) => {
@@ -82,16 +142,23 @@ const Products = () => {
     handleAddItem(id, qty);
     openNotification(product, qty);
   };
+
   return (
     <section>
       <div className="breadcrumb">
         <h1 className="breadcrumb-title">Products</h1>
-        <Breadcrumb separator=">">
-          <BreadcrumbItem>
-            <Link to={"/"}>Home</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem>Products</BreadcrumbItem>
-        </Breadcrumb>
+        <Breadcrumb
+          separator=">"
+          items={[
+            {
+              title: "Home",
+              href: "/",
+            },
+            {
+              title: "Products",
+            },
+          ]}
+        />
       </div>
       <div className="container">
         <div className="filter-container">
@@ -113,15 +180,48 @@ const Products = () => {
                     <h2>Categories</h2>
                   </div>
                   <ul>
-                    <li className="cate">
+                    <li
+                      className={`cate ${
+                        currentFilter === "Featured" ? "active" : ""
+                      }`}
+                      onClick={() => {
+                        handleFilter({
+                          type: "category",
+                          params: "Featured",
+                        });
+                        onClose();
+                      }}
+                    >
                       <RightOutlined />
                       Featured
                     </li>
-                    <li className="cate">
+                    <li
+                      className={`cate ${
+                        currentFilter === "Top Seller" ? "active" : ""
+                      }`}
+                      onClick={() => {
+                        handleFilter({
+                          type: "category",
+                          params: "Top Seller",
+                        });
+                        onClose();
+                      }}
+                    >
                       <RightOutlined />
                       Top Seller
                     </li>
-                    <li className="cate">
+                    <li
+                      className={`cate ${
+                        currentFilter === "Latest" ? "active" : ""
+                      }`}
+                      onClick={() => {
+                        handleFilter({
+                          type: "category",
+                          params: "Latest",
+                        });
+                        onClose();
+                      }}
+                    >
                       <RightOutlined />
                       Latest
                     </li>
@@ -133,13 +233,46 @@ const Products = () => {
                   </div>
                   <ul className="size">
                     <li>
-                      <button>S</button>
+                      <button
+                        className={currentFilter === "S" ? "active" : ""}
+                        onClick={() => {
+                          handleFilter({
+                            type: "size",
+                            params: "S",
+                          });
+                          onClose();
+                        }}
+                      >
+                        S
+                      </button>
                     </li>
                     <li>
-                      <button>M</button>
+                      <button
+                        className={currentFilter === "M" ? "active" : ""}
+                        onClick={() => {
+                          handleFilter({
+                            type: "size",
+                            params: "M",
+                          });
+                          onClose();
+                        }}
+                      >
+                        M
+                      </button>
                     </li>
                     <li>
-                      <button>L</button>
+                      <button
+                        className={currentFilter === "L" ? "active" : ""}
+                        onClick={() => {
+                          handleFilter({
+                            type: "size",
+                            params: "L",
+                          });
+                          onClose();
+                        }}
+                      >
+                        L
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -150,24 +283,65 @@ const Products = () => {
                   <ul className="flex">
                     <li>
                       <button
-                        className="color"
+                        className={`color ${
+                          currentFilter === "Black" ? "active" : ""
+                        }`}
                         style={{ backgroundColor: "black" }}
+                        onClick={() => {
+                          handleFilter({
+                            type: "color",
+                            params: "Black",
+                          });
+                          onClose();
+                        }}
                       ></button>
                     </li>
                     <li>
                       <button
-                        className="color"
+                        className={`color ${
+                          currentFilter === "Blue" ? "active" : ""
+                        }`}
                         style={{ backgroundColor: "blue" }}
+                        onClick={() => {
+                          handleFilter({
+                            type: "color",
+                            params: "Blue",
+                          });
+                          onClose();
+                        }}
                       ></button>
                     </li>
                     <li>
                       <button
-                        className="color"
+                        className={`color ${
+                          currentFilter === "White" ? "active" : ""
+                        }`}
                         style={{ backgroundColor: "white" }}
+                        onClick={() => {
+                          handleFilter({
+                            type: "color",
+                            params: "White",
+                          });
+                          onClose();
+                        }}
                       ></button>
                     </li>
                   </ul>
                 </div>
+                <button
+                  className="clear-filter"
+                  onClick={() => {
+                    setLoading(true);
+                    setTimeout(() => {
+                      setLoading(false);
+                      setCurrentFilter("");
+                      setCurrentFilterType("");
+                      onClose();
+                    }, 500);
+                  }}
+                >
+                  Clear Filtered
+                </button>
               </div>
             </Drawer>
           </div>
@@ -193,7 +367,7 @@ const Products = () => {
           </div>
         </div>
         <div className="products-container">
-          {products.map((product) => (
+          {filteredProducts().map((product) => (
             <div key={product.id} className="products">
               <Link to={`/products/${product.id}`}>
                 <div
@@ -214,7 +388,10 @@ const Products = () => {
                 >
                   <ShoppingOutlined title="Add To Cart" />
                 </div>
-                <div className="icon" onClick={handleQuickview}>
+                <div
+                  className="icon"
+                  onClick={() => handleQuickview(product.id)}
+                >
                   <SearchOutlined title="Quickview" />
                 </div>
                 <div className="icon">
@@ -225,6 +402,35 @@ const Products = () => {
           ))}
         </div>
       </div>
+
+      {showImage ? (
+        <div className="img-quickview-container">
+          <div className="img-quickview">
+            <MDBCarousel showControls dark>
+              <MDBCarouselItem
+                itemId={1}
+                className="d-block w-100"
+                src={currentImg[0]}
+                alt="..."
+              />
+              <MDBCarouselItem
+                itemId={2}
+                className="d-block w-100"
+                src={currentImg[1]}
+                alt="..."
+              />
+            </MDBCarousel>
+            <div className="close-image" onClick={handleCloseImg}>
+              <CloseOutlined />
+            </div>
+          </div>
+        </div>
+      ) : null}
+      {loading ? (
+        <div className="img-quickview-container">
+          <span className="loader-1"></span>
+        </div>
+      ) : null}
     </section>
   );
 };

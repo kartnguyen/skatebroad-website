@@ -21,7 +21,7 @@
       "images": ["/products/Frame1291_19fa2bdc-7c49-4bfa-9cea-faab095326c5.jpg", "/products/image96.jpg"],
       "category": "Top Seller",
       "size": "M",
-      "color": "Blue"
+      "color": "Black"
     },
     {
       "id": 3,
@@ -45,7 +45,7 @@
       "images": ["/products/image76.jpg", "/products/image77.jpg"],
       "category": "Top Seller",
       "size": "S",
-      "color": "Black"
+      "color": "White"
     },
     {
       "id": 5,
@@ -57,7 +57,7 @@
       "images": ["/products/image78.jpg", "/products/image87.jpg"],
       "category": "Featured",
       "size": "M",
-      "color": "White"
+      "color": "Black"
     },
     {
       "id": 6,
@@ -69,7 +69,7 @@
       "images": ["/products/image80.jpg", "/products/image81.jpg"],
       "category": "Top Seller",
       "size": "L",
-      "color": "Blue"
+      "color": "Black"
     },
     {
       "id": 7,
@@ -81,7 +81,7 @@
       "images": ["/products/image82.jpg", "/products/image84.jpg"],
       "category": "Latest",
       "size": "L",
-      "color": "Black"
+      "color": "White"
     },
     {
       "id": 8,
@@ -105,7 +105,7 @@
       "images": ["/products/image88_c21bcb38-57cf-48b9-9dec-cfaa22438988.jpg", "/products/image90.jpg"],
       "category": "Top Seller",
       "size": "S",
-      "color": "White"
+      "color": "Blue"
     },
     {
       "id": 10,

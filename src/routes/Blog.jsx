@@ -1,5 +1,4 @@
 import { Breadcrumb } from "antd";
-import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 import { Link } from "react-router-dom";
 
 const Blog = () => {
@@ -7,12 +6,18 @@ const Blog = () => {
     <section>
       <div className="breadcrumb">
         <h1 className="breadcrumb-title">News</h1>
-        <Breadcrumb separator=">">
-          <BreadcrumbItem>
-            <Link to="/">Home</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem>News</BreadcrumbItem>
-        </Breadcrumb>
+        <Breadcrumb
+          separator=">"
+          items={[
+            {
+              title: "Home",
+              href: "/",
+            },
+            {
+              title: "News",
+            },
+          ]}
+        />
       </div>
       <div className="container">
         <div className="blog-page">

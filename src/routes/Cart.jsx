@@ -1,18 +1,39 @@
-import { Breadcrumb, Image, Table } from "antd";
-import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
+import { Breadcrumb, Image, Modal, Table } from "antd";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../hooks/useCartContext";
-import { DeleteOutlined } from "@ant-design/icons";
+import {
+  CaretDownOutlined,
+  CaretUpOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import { formattedPrice } from "../assets/js/api";
+import { useState } from "react";
 
 const Cart = () => {
-  const { totalItems, items, handleRemoveItem } = useCartContext();
+  const [open, setOpen] = useState(false);
+  const [currentId, setCurrnentId] = useState("");
+  const { totalItems, items, handleRemoveItem, handleUpdateItem } =
+    useCartContext();
 
   let totalPrice = 0;
   for (let i = 0; i < totalItems; i++) {
     totalPrice += items[i].product.price * items[i].quantity;
   }
-
+  const handleQuantity = ({ type, params }) => {
+    let currentQuantity = params.quantity;
+    if (type === "minus") {
+      if (params.quantity > 1) {
+        currentQuantity = params.quantity - 1;
+        handleUpdateItem(params.id, currentQuantity);
+      } else {
+        document.querySelector(`.id_${params.id}`).classList.add("disabled");
+      }
+    } else if (type === "plus") {
+      currentQuantity = params.quantity + 1;
+      handleUpdateItem(params.id, currentQuantity);
+      document.querySelector(`.id_${params.id}`).classList.remove("disabled");
+    }
+  };
   const dataSource = items.map((item) => ({
     key: item.product.id,
     name: item.product.name,
@@ -46,13 +67,44 @@ const Cart = () => {
     {
       title: "Quantity",
       dataIndex: "quantity",
+      render: (_, record) => (
+        <>
+          <div className="js-qty">
+            <button
+              className={`qty_minus id_${record.key}`}
+              onClick={() =>
+                handleQuantity({
+                  type: "minus",
+                  params: { id: record.key, quantity: record.quantity },
+                })
+              }
+            >
+              <CaretDownOutlined />
+            </button>
+            <span className="qty-input">{record.quantity}</span>
+            <button
+              className="qty_plus"
+              onClick={() =>
+                handleQuantity({
+                  type: "plus",
+                  params: { id: record.key, quantity: record.quantity },
+                })
+              }
+            >
+              <CaretUpOutlined />
+            </button>
+          </div>
+        </>
+      ),
       key: "quantity",
+      width: 100,
     },
     {
       title: "Total",
       dataIndex: "total",
       key: "total",
       render: (_, record) => formattedPrice(record.total),
+      width: 100,
     },
     {
       title: "Delete",
@@ -60,21 +112,47 @@ const Cart = () => {
       render: (text, record) => (
         <DeleteOutlined
           style={{ fontSize: "20px", color: "#444" }}
-          onClick={() => handleRemoveItem(record.key)}
+          onClick={() => showModal(record.key)}
         />
       ),
+      width: 80,
+      align: "center",
     },
   ];
-
+  const showModal = (id) => {
+    setOpen(true);
+    setCurrnentId(id);
+  };
+  const handleOk = () => {
+    handleRemoveItem(currentId);
+    setOpen(false);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
   return (
     <section className="cart-page">
+      <Modal
+        title="Delete?"
+        open={open}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Do you want to remove this product?</p>
+      </Modal>
       <div className="container">
-        <Breadcrumb separator=">">
-          <BreadcrumbItem>
-            <Link to="/">Home</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem>Your Shopping Cart</BreadcrumbItem>
-        </Breadcrumb>
+        <Breadcrumb
+          separator=">"
+          items={[
+            {
+              title: "Home",
+              href: "/",
+            },
+            {
+              title: "Your Shopping Cart",
+            },
+          ]}
+        />
         {totalItems ? (
           <div className="cart-products">
             <Table
