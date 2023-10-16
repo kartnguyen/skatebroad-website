@@ -1,11 +1,11 @@
 import { Breadcrumb, Image, Table } from "antd";
-import { Link } from "react-router-dom";
 import { useCartContext } from "../hooks/useCartContext";
 import { formattedPrice } from "../assets/js/api";
 import { useForm } from "react-hook-form";
 
 const Checkout = () => {
   const { totalItems, items } = useCartContext();
+  const order = JSON.parse(localStorage.getItem("order")) || {};
 
   let totalPrice = 0;
   let totolProducts = 0;
@@ -41,6 +41,7 @@ const Checkout = () => {
               border: "1px solid #ccc",
               borderRadius: "4px",
               width: 80,
+              marginRight: "10px",
             }}
             src={record.img}
           />
@@ -67,7 +68,10 @@ const Checkout = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    localStorage.setItem("order", JSON.stringify(data));
+    window.location.pathname = "/confirm";
+  };
   return (
     <section className="checkout-page">
       <div className="container">
@@ -106,6 +110,7 @@ const Checkout = () => {
                       type="text"
                       id="name"
                       className="input"
+                      defaultValue={order.Name}
                       {...register("Name", {
                         required: true,
                         maxLength: 100,
@@ -134,6 +139,7 @@ const Checkout = () => {
                       type="text"
                       id="phone"
                       className="input"
+                      defaultValue={order.Phone}
                       {...register("Phone", {
                         required: true,
                         pattern: /^[0-9]{10}$/,
@@ -167,6 +173,7 @@ const Checkout = () => {
                       type="text"
                       id="email"
                       aria-invalid={errors.Email ? "true" : "false"}
+                      defaultValue={order.Email}
                       className="input"
                       {...register("Email", {
                         required: true,
@@ -201,6 +208,7 @@ const Checkout = () => {
                       type="text"
                       id="district"
                       aria-invalid={errors.District ? "true" : "false"}
+                      defaultValue={order.District}
                       className="input"
                       {...register("District", {
                         required: true,
@@ -228,6 +236,7 @@ const Checkout = () => {
                     <input
                       type="text"
                       aria-invalid={errors.Address ? "true" : "false"}
+                      defaultValue={order.Address}
                       id="address"
                       {...register("Address", {
                         required: true,
@@ -257,7 +266,7 @@ const Checkout = () => {
                       {...register("Date")}
                       className="input"
                       min={minDate}
-                      defaultValue={minDate}
+                      defaultValue={order.Date ? order.Date : minDate}
                     />
                   </div>
                   <div className="item">
@@ -269,6 +278,7 @@ const Checkout = () => {
                       id="note"
                       {...register("note")}
                       className="input"
+                      defaultValue={order.note}
                     />
                   </div>
                 </div>
@@ -286,6 +296,9 @@ const Checkout = () => {
                         {...register("payment", {
                           required: true,
                         })}
+                        defaultChecked={
+                          order.payment === "online_payment" ? true : false
+                        }
                       />
                       <label htmlFor="item1" className="check-box" />
                       <p>Online Payment</p>
@@ -301,6 +314,9 @@ const Checkout = () => {
                         {...register("payment", {
                           required: true,
                         })}
+                        defaultChecked={
+                          order.payment === "on_delivery" ? true : false
+                        }
                       />
                       <label className="check-box" htmlFor="item2" />
                       <p>Cash on Delivery</p>
@@ -356,12 +372,16 @@ const Checkout = () => {
                   </div>
                 </div>
               </div>
-              <Link className="check_out" to={""}>
-                <button className="confirm" onClick={handleSubmit(onSubmit)}>
+              <div className="check_out">
+                <button
+                  className="confirm"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleSubmit(onSubmit)}
+                >
                   Check Out
                   <div className="triangle-top-right" />
                 </button>
-              </Link>
+              </div>
             </div>
           </div>
         </form>

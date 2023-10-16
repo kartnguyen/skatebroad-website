@@ -53,25 +53,31 @@ export const CartReducer = (state, action) => {
         products: updatedProducts,
       };
     }
+    case "REMOVE_CART":
+      return {
+        ...state,
+        products: [],
+      };
     default:
       throw new Error("Invalid action type: " + action.type);
   }
 };
 const storedCartData = localStorage.getItem("cart");
 
-let innitialState = {
+let initialState = {
   products: [],
 };
+
 if (storedCartData) {
   const parsedCartData = JSON.parse(storedCartData);
-  innitialState = {
+  initialState = {
     products: parsedCartData,
   };
 }
 // eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const { findProductById } = useAppContext();
-  const [state, dispatch] = useReducer(CartReducer, innitialState);
+  const [state, dispatch] = useReducer(CartReducer, initialState);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.products));
@@ -97,6 +103,11 @@ export const CartProvider = ({ children }) => {
       payload: { productId, quantity },
     });
   };
+  const handleRemoveCart = () => {
+    dispatch({
+      type: "REMOVE_CART",
+    });
+  };
   const items = state.products.map((item) => ({
     product: findProductById(item.productId),
     quantity: item.quantity,
@@ -111,6 +122,7 @@ export const CartProvider = ({ children }) => {
         handleRemoveItem,
         items,
         handleUpdateItem,
+        handleRemoveCart,
       }}
     >
       {children}

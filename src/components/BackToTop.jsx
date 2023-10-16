@@ -1,4 +1,4 @@
-import { VerticalAlignTopOutlined } from "@ant-design/icons";
+import { ArrowUpOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
 
 const BackToTop = () => {
@@ -34,7 +34,7 @@ const BackToTop = () => {
           onClick={handleScrollToTop}
           title="Back To Top"
         >
-          <VerticalAlignTopOutlined style={{ color: "#000" }} />
+          <ArrowUpOutlined style={{ color: "#000" }} />
         </div>
       )}
     </>

@@ -118,6 +118,30 @@
       "category": "Featured",
       "size": "M",
       "color": "Blue"
+    },
+    {
+      "id": 11,
+      "name": "Levi Ryders",
+      "price": 79.93,
+      "quantity": 1,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/products/image81.jpg",
+      "images": ["/products/image81.jpg", "/products/image79.jpg"],
+      "category": "Top Seller",
+      "size": "M",
+      "color": "Black"
+    },
+    {
+      "id": 12,
+      "name": "KarT Harbinger",
+      "price": 80.21,
+      "quantity": 1,
+      "description": "Nullam sagittis. Vivamus laoreet. Vestibulum rutrum, mi nec vehicula, eros quam gravida nis. Being able to read a novel in another language and understand it is a huge achievement. You’ll feel accomplished the moment you read that final page, close the book, and reflect on the experience. You might find...",
+      "thumbnail": "/products/image96.jpg",
+      "images": ["/products/image96.jpg", "/products/image77.jpg"],
+      "category": "Featured",
+      "size": "L",
+      "color": "Blue"
     }
   ]
   

@@ -394,9 +394,11 @@ const Products = () => {
                 >
                   <SearchOutlined title="Quickview" />
                 </div>
-                <div className="icon">
-                  <HeartOutlined title="Add To Wishlist" />
-                </div>
+                <Link to={"/wishlist"} id="wishlist-btn">
+                  <div className="icon">
+                    <HeartOutlined title="Add To Wishlist" />
+                  </div>
+                </Link>
               </div>
             </div>
           ))}

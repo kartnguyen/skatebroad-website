@@ -167,7 +167,10 @@ const Cart = () => {
                 <b>{formattedPrice(totalPrice)}</b>
               </div>
               <Link to="/checkout">
-                <button className="check-out-btn">Proceed to checkout</button>
+                <button className="check-out-btn submit">
+                  Proceed to checkout
+                  <div className="triangle-top-right" />
+                </button>
               </Link>
             </div>
           </div>

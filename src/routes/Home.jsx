@@ -48,11 +48,9 @@ const Home = () => {
   };
   const handleFilter = (params) => {
     setLoading(true);
-    document.body.classList.add("overflow-hidden");
     setTimeout(() => {
       setLoading(false);
       setCurrentFilter(params);
-      document.body.classList.remove("overflow-hidden");
     }, 800);
   };
   const handleQuickview = (id) => {
@@ -129,8 +127,8 @@ const Home = () => {
     }, 1000);
   };
   return (
-    <>
-      <section>
+    <div className="home">
+      <section className="slider-container">
         <MDBCarousel showControls showIndicators fade dark>
           <div className="slider">
             <MDBCarouselItem
@@ -381,73 +379,71 @@ const Home = () => {
           </Row>
         </div>
       </section>
-      <section style={{ margin: "60px auto" }}>
-        <div className="container">
-          <Row>
-            <Col span={12}>
-              <div style={{ overflow: "hidden", position: "relative" }}>
-                <div
-                  className="banner"
-                  style={{
-                    backgroundImage: 'url("/products/banner_h4_1.jpg")',
-                  }}
-                ></div>
-                <div className="text-banner">
-                  <Typography.Title level={5} style={{ color: "#ff7245" }}>
-                    NEW ARRIVAL
-                  </Typography.Title>
-                  <Typography.Title
-                    level={1}
-                    style={{ fontWeight: 700, fontSize: 48 }}
+      <section className="banner-container">
+        <Row>
+          <Col span={12}>
+            <div style={{ overflow: "hidden", position: "relative" }}>
+              <div
+                className="banner"
+                style={{
+                  backgroundImage: 'url("/products/banner_h4_1.jpg")',
+                }}
+              ></div>
+              <div className="text-banner">
+                <Typography.Title level={5} style={{ color: "#ff7245" }}>
+                  NEW ARRIVAL
+                </Typography.Title>
+                <Typography.Title
+                  level={1}
+                  style={{ fontWeight: 700, fontSize: 48 }}
+                >
+                  Summer
+                  <br />
+                  Sale -50%
+                </Typography.Title>
+                <Link to={"/products"}>
+                  <Button
+                    className="btn-btn"
+                    style={{ textTransform: "uppercase" }}
                   >
-                    Summer
-                    <br />
-                    Sale -50%
-                  </Typography.Title>
-                  <Link to={"/products"}>
-                    <Button
-                      className="btn-btn"
-                      style={{ textTransform: "uppercase" }}
-                    >
-                      See more
-                    </Button>
-                  </Link>
-                </div>
+                    See more
+                  </Button>
+                </Link>
               </div>
-            </Col>
-            <Col span={12}>
-              <div style={{ overflow: "hidden", position: "relative" }}>
-                <div
-                  className="banner"
-                  style={{
-                    backgroundImage: 'url("/products/banner_h4_2.jpg")',
-                  }}
-                ></div>
-                <div className="text-banner">
-                  <Typography.Title level={5} style={{ color: "#ff7245" }}>
-                    NEW ARRIVAL
-                  </Typography.Title>
-                  <Typography.Title
-                    level={1}
-                    style={{ fontWeight: 700, fontSize: 48 }}
+            </div>
+          </Col>
+          <Col span={12}>
+            <div style={{ overflow: "hidden", position: "relative" }}>
+              <div
+                className="banner"
+                style={{
+                  backgroundImage: 'url("/products/banner_h4_2.jpg")',
+                }}
+              ></div>
+              <div className="text-banner">
+                <Typography.Title level={5} style={{ color: "#ff7245" }}>
+                  NEW ARRIVAL
+                </Typography.Title>
+                <Typography.Title
+                  level={1}
+                  style={{ fontWeight: 700, fontSize: 48 }}
+                >
+                  Spring
+                  <br />
+                  Collection
+                </Typography.Title>
+                <Link to={"/products"}>
+                  <Button
+                    className="btn-btn"
+                    style={{ textTransform: "uppercase" }}
                   >
-                    Spring
-                    <br />
-                    Collection
-                  </Typography.Title>
-                  <Link to={"/products"}>
-                    <Button
-                      className="btn-btn"
-                      style={{ textTransform: "uppercase" }}
-                    >
-                      See more
-                    </Button>
-                  </Link>
-                </div>
+                    See more
+                  </Button>
+                </Link>
               </div>
-            </Col>
-          </Row>
-        </div>
+            </div>
+          </Col>
+        </Row>
       </section>
       <section>
         <div className="container">
@@ -507,16 +503,18 @@ const Home = () => {
                   >
                     <SearchOutlined title="Quickview" />
                   </div>
-                  <div className="icon">
-                    <HeartOutlined title="Add To Wishlist" />
-                  </div>
+                  <Link to={"/wishlist"} id="wishlist-btn">
+                    <div className="icon">
+                      <HeartOutlined title="Add To Wishlist" />
+                    </div>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section>
+      <section style={{ backgroundColor: " #E5F3F4" }}>
         <div className="container">
           <div className="contact-us">
             <div className="contact-content">
@@ -670,7 +668,7 @@ const Home = () => {
           <span className="loader-1"></span>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 

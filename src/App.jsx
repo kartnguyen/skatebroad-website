@@ -6,12 +6,12 @@ import Products from "./routes/Products";
 import Blog from "./routes/Blog";
 import Cart from "./routes/Cart";
 import Login from "./routes/Login";
-import Register from "./routes/Register";
 import ProductDetail from "./routes/ProductDetail";
 import Wishlist from "./routes/Wishlist";
 import { AppProvider } from "./context/AppContext";
 import { CartProvider } from "./context/CartContext";
 import Checkout from "./routes/Checkout";
+import Confirm from "./routes/Confirm";
 
 function App() {
   const routes = createBrowserRouter([
@@ -24,10 +24,10 @@ function App() {
         { path: "blog", element: <Blog /> },
         { path: "cart", element: <Cart /> },
         { path: "login", element: <Login /> },
-        { path: "register", element: <Register /> },
         { path: "products/:productId", element: <ProductDetail /> },
         { path: "wishlist", element: <Wishlist /> },
         { path: "checkout", element: <Checkout /> },
+        { path: "confirm", element: <Confirm /> },
       ],
     },
   ]);
